@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 수정</title>
+  </head>
+  <body>
+    <!-- <button>누르세요</button> -->
+    <button onclick="changeContainer()">누르세요</button>
+    <div id="container">아직 안 눌렀네요</div>
+    <script>
+      // id는 #이 들어가야한다.
+      const container = document.querySelector("#container");
+      console.log(container);
+      console.log(container.innerHTML);
+      console.log(container.innerText);
+      console.log(container.textContent);
+      function changeContainer() {
+        // 외부에 있는 변수를 내부에 가져다가 쓸 수 있습니다
+        container.innerHTML = "눌렀습니다";
+      }
+    </script>
+  </body>
+</html>

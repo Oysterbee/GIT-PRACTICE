@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: beige;
+            margin: 16px;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <button onclick="box2.classList.toggle('hidden')">토글</button>
+    <div id="box3"></div>
+    <script>
+        const box1 = document.querySelector("#box1");
+        const box2 = document.querySelector("#box2");
+        const box3 = document.querySelector("#box3");
+        console.log(box1.getAttribute("title"));
+        box1.setAttribute("title", "속성을 바꾸었습니다."); //get,set,attribute
+        box1.title = "속성을 바꾸었습니다2"; // getter, setter, property
+        // box2.class = "hidden"; //이건 안됨
+        box2.classList.add; // 생성
+        box2.classList.remove; // 제거
+        box2.classList.toggle; // 있으면 제거, 없으면 생성
+        box3.style.backgroundColor = "red"; // 우선도가 높아 직접 사용
+    </script>
+</body>
+</html>
