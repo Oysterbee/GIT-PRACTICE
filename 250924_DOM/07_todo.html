@@ -40,6 +40,7 @@
                 </label>
                 <button>등록</button>
             </form>
+            <button>삭제</button>
         </section>
         <section id="memoBox">
             <p>아직 메모가 없습니다</p>
@@ -47,20 +48,24 @@
         <script>
             const memoForm = document.querySelector("#memoForm");
             const memoBox = document.querySelector("#memoBox");
+            const memos = [];
             memoForm.addEventListener("submit", (event) => {
                 event.preventDefault();
                 const formData = new FormData(event.currentTarget);
                 const title = formData.get("title");
                 const content = formData.get("content");
-                console.log(title, content);
-                const memoElement = document.createElement("div");
-                memoElement.innerHTML = `
-                    <h3>${formData.get("title")}</h3>
-                    <p>${formData.get("content")}</p>
+                memos.push({ title: formData.get("title"), content: formData.get("content") });
+                console.log(memos);
+                memoBox.innerHTML = "";
+                memos.forEach(memo=>{
+                    const memoElement = document.createElement("div");
+                    memoElement.innerHTML = `
+                    <h3>${memo.title}</h3>
+                    <p>${memo.content}</p>
                 `;
                 memoElement.classList.add("memo");
-                memoBox.innerHTML = "";
                 memoBox.append(memoElement);
+                })
             });
         </script>
     </body>
