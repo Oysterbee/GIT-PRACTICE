@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TODO</title>
+        <style>
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 4px;
+                padding: 4px;
+            }
+            #memoBox {
+                margin: 16px;
+                border: 1px solid black;
+                padding: 8px;
+                border-radius: 8px;
+            }
+            .memo{
+                width: 160;
+                border: 1px solid black;
+                padding: 8px;
+                border-radius: 8px;
+                margin: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <form id="memoForm">
+                <label>
+                    제목 :
+                    <input type="text" name="title" />
+                </label>
+                <label>
+                    내용 :
+                    <textarea name="content"></textarea>
+                </label>
+                <button>등록</button>
+            </form>
+        </section>
+        <section id="memoBox">
+            <p>아직 메모가 없습니다</p>
+        </section>
+        <script>
+            const memoForm = document.querySelector("#memoForm");
+            const memoBox = document.querySelector("#memoBox");
+            memoForm.addEventListener("submit", (event) => {
+                event.preventDefault();
+                const formData = new FormData(event.currentTarget);
+                const title = formData.get("title");
+                const content = formData.get("content");
+                console.log(title, content);
+                const memoElement = document.createElement("div");
+                memoElement.innerHTML = `
+                    <h3>${formData.get("title")}</h3>
+                    <p>${formData.get("content")}</p>
+                `;
+                memoElement.classList.add("memo");
+                memoBox.innerHTML = "";
+                memoBox.append(memoElement);
+            });
+        </script>
+    </body>
+</html>

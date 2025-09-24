@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+</head>
+<body>
+    <!-- 1. Clipboard -->
+    <input id="text" /><br />
+    <input id="text2" /><br />
+    <button id="copy">복사</button>
+    <button id="paste">붙여넣기</button>
+
+    <script>
+      // 1. Clipboard
+      const text = document.querySelector("#text");
+      const text2 = document.querySelector("#text2");
+      const copy = document.querySelector("#copy");
+      const paste = document.querySelector("#paste");
+      copy.addEventListener("click", () => {
+        navigator.clipboard.writeText(text.value);
+        // localhost, https. -> http. x.
+      });
+      paste.addEventListener("click", async () => {
+        const copyText = await navigator.clipboard.readText();
+        text2.value = copyText;
+      });
+      console.log(location);
+    </script>
+</body>
+</html>
