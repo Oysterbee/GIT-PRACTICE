@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise</title>
+  </head>
+  <body>
+    <script>
+      console.log("A"); // script
+      setTimeout(() => console.log("T"), 0); // 매크로태스크(setTimeout)
+      Promise.resolve().then(() => console.log("P")); // 마이크로태스크큐
+      console.log("B");
+
+      // script가 모두 실행이 되고, (중간에 마이크로태스크큐를 모두 실행하고...) 다음 macrotask queue인 setTimeout
+      // -> 다 빌드업임 (async, await를 위한.)
+    </script>
+  </body>
+</html>

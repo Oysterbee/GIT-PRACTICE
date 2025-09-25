@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button id="btn">이걸누르면</button>
+        <button id="sync" onclick="func1()">동기</button>
+        <button id="async" onclick="func3()">비동기</button>
+
+        <script>
+            document.querySelector("#btn").addEventListener("click", () => {
+                alert("콜백!");
+            });
+            function func1() {
+                //동기
+                console.log("func1");
+                console.log("func2");
+                console.log("func3");
+            }
+
+            function func2() {
+                //비동기 -> 호출 순서 -> 실행 순서가 일치하지 않음
+                setTimeout(() => {
+                    console.log("func2");
+                }, 3000);
+                setTimeout(() => {
+                    console.log("func3");
+                }, 2000);
+                setTimeout(() => {
+                    console.log("func4");
+                }, 1000);
+            }
+
+            function func3() {
+                //외부에서 예측하기 어려운 데이터, 다른 네트워크에서의 요청들을 주로 다룸
+                setTimeout(() => {
+                    console.log("func2");
+                }, Math.random() * 3000);
+                setTimeout(() => {
+                    console.log("func3");
+                }, Math.random() * 2000);
+                setTimeout(() => {
+                    console.log("func4");
+                }, Math.random() * 1000);
+            }
+        </script>
+    </body>
+</html>
